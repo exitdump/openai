@@ -9,7 +9,7 @@ async function stream() {
   const response = await openai.chat.completions.create({
     model: "gpt-4o", 
     messages: [
-      { role: msg.role, content: "Hello, how are you?" }
+      { role: msg.role.value, content: msg.content.value }
     ],
   });
 
