@@ -2,18 +2,21 @@
 import OpenAI from 'openai';
 
 const openai = new OpenAI({
-  apiKey: 'YOUR_API_KEY', // 🔐 Replace with your actual key
+  apiKey: process.env.OPENAI_API_KEY
 });
 
-async function chat() {
+async function stream() {
   const response = await openai.chat.completions.create({
     model: "gpt-4o", 
     messages: [
-      { role: "user", content: "Hello, how are you?" }
+      { role: msg.role, content: "Hello, how are you?" }
     ],
   });
 
+
+
+  
   console.log(response.choices[0].message.content);
 }
 
-chat();
+stream();
